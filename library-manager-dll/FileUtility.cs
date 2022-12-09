@@ -64,5 +64,10 @@ namespace ce103_hw3_library_lib
 
             return true;
         }
+
+        public static void WriteBlock(int bookId, byte[] updatedBookBytes, string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

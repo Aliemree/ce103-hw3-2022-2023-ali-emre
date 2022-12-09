@@ -411,6 +411,7 @@ WELCOME ";
                     bookWrittenBytes = FileUtility.ReadBlock(2, Book.ID_MAX_LENGTH, "C:\\Users\\Ali\\Desktop\\ce103-hw3-ali-emre\\Library.dat");
                     bookWrittenObject = Book.ByteArrayBlockToBook(bookWrittenBytes);
 
+
                     WriteLine("\nBook deleted successfully...");
                     ReadKey(true);
                     RunMainMenu();
@@ -834,7 +835,61 @@ WELCOME ";
 
         private void BookList()
         {
-            RunMainMenu();
+            for (int c = 1; c < 5; c++)
+            {
+                byte[] bookWrittenBytes = FileUtility.ReadBlock(c, Book.BOOK_DATA_BLOCK_SIZE, "C:\\Users\\Ali\\Desktop\\ce103-hw3-ali-emre\\file.dat");
+                Book bookWrittenObject = Book.ByteArrayBlockToBook(bookWrittenBytes);
+
+
+
+                if (bookWrittenObject != null)
+                {
+                    Book book = new Book();
+                    int counter = 0;
+                    int bookId;
+
+                    try
+                    {
+                        bookId = Convert.ToInt32(bookWrittenObject.Id);
+
+                        while (bookId > 0)
+                        {
+                            bookId /= 10;
+                            counter++;
+
+                        }
+
+                        int x = 5;
+                        if (counter == 4)
+                        {
+                            SetCursorPosition(x, 20);
+                            WriteLine(bookWrittenObject.Id);
+                            WriteLine(bookWrittenObject.Id);
+                            WriteLine(bookWrittenObject.Title);
+                            WriteLine(bookWrittenObject.Description);
+                            WriteLine(bookWrittenObject.Categories);
+                            WriteLine(bookWrittenObject.Year);
+                            WriteLine(bookWrittenObject.City);
+                            WriteLine(bookWrittenObject.Pages);
+                            WriteLine(bookWrittenObject.Keywords);
+                            WriteLine(bookWrittenObject.Editors);
+                            WriteLine(bookWrittenObject.Publisher);
+                            WriteLine(bookWrittenObject.URL);
+                            WriteLine(bookWrittenObject.CatalogIDS);
+                            WriteLine(bookWrittenObject.Price);
+                            WriteLine(bookWrittenObject.Location);
+                            WriteLine(bookWrittenObject.Status);
+                            WriteLine(bookWrittenObject.GivenDatetime);
+                            WriteLine(bookWrittenObject.ReturnDatetime);
+                            ReadKey();
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
+                        return;
+                    }
+                }
+            }
         }
         private void SearchBook()
         {

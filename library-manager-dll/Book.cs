@@ -354,5 +354,15 @@ namespace ce103_hw3_library_lib
             }
 
         }
+
+        public static object Where(Func<object, bool> value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static byte[] BookToByteArrayBlock(int v1, int iD_MAX_LENGTH, string v2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
